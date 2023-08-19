@@ -1,1 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecom
+    username: root
+    password: Ankit@1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: localhost
+
+
+
+
+##passing api gateway url to all microservices
+microservices:
+  apiGateway:
+    uri: http://localhost:8443
